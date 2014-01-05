@@ -16,5 +16,5 @@ AVAILABLE OPTIONS:
 
 -s or --set-sdk-type: Set the sdk version type to use (1.x Web or 2.x Web Profile). 
 
--u or --update-to-version <version>: Update sdk to specified version. Default update to 'latest' version 2
+-u or --update-to-version <<version>>: Update sdk to specified version. Default update to 'latest' version 2
 
