@@ -6,8 +6,8 @@ This script is useful if you want to automate the installation or the upgrade of
 
 Usage:
 
-Ex cute this command in a shell:
-# python updater.sh [OPTIONS]
+Execute this command in a shell:
+python updater.sh [OPTIONS]
 AVAILABLE OPTIONS:
 -l or --list-availabes: list all the available online saphcp sdk versions of the.
 -s or --set-sdk-type: Set the sdk version type to use (1.x Web or 2.x Web Profile). 
