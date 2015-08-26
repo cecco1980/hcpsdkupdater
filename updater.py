@@ -16,7 +16,8 @@ def dlfile(url, destdir):
     try:
     	createDir(destdir)
     	opener = urllib2.build_opener()
-    	opener.addheaders.append(('Cookie', 'eula_3.0_agreed=tools.hana.ondemand.com/developer-license-3.0.0.txt'))
+        opener.addheaders.append(('Cookie', 'eula_3.1_agreed=tools.hana.ondemand.com/developer-license-3.1.txt'))
+    	#opener.addheaders.append(('Cookie', 'eula_3.0_agreed=tools.hana.ondemand.com/developer-license-3.0.0.txt'))
         f = opener.open(url)
         
         print "downloading " + url + " in directory: " + destdir
@@ -54,12 +55,15 @@ def unzip(file,output_dir):
 SDK_URL = 'https://tools.hana.ondemand.com'
 
 #These flags are the links name in the html for latest version
-LAST_FLAG = 'latestSdk'
-LAST_BETA_FLAG = 'latestBetaSdk'
+LAST_WEB_FLAG = 'latestNeoJavaWebSdk1'
+LAST_WEB2_FLAG = 'latestNeoJavaWebSdk2'
+LAST_WP_FLAG = 'latestNeoJavaee6WpSdk2'
 
 #These are the prefix in the file name of the two version of sdk
 SDK_WEB_FLAG = 'neo-java-web-sdk-'
 SDK_J2EE_WP_FLAG = 'neo-javaee6-wp-sdk-'
+SDK_WEB2_FLAG = 'neo-java-web-sdk'
+-
 #define the directory name for sdk installation
 hcp_sdk_dir = 'sap-hcp-sdk'
 
@@ -70,13 +74,16 @@ sdk_home = user_home + os.sep + hcp_sdk_dir + os.sep
 #parsing arguments
 parser = argparse.ArgumentParser(description='SAP HCP SDK Updater')
 parser.add_argument('-l','--list-available-versions', dest="list", action="store_true", default=False,
-                   help='list all the available versions.')
-parser.add_argument('-s','--set-sdk-type', dest="sdktype", type=int, default=2, choices=[1, 2],
-                   help='Set the sdk version type to use.')
+                    help='list all the available versions.')
+
+parser.add_argument('-s','--set-sdk-type', dest="sdktype", type=int, default=2, choices=[1, 2, 3],
+                    help='Set the sdk version type to use.')
+
 parser.add_argument('-u','--update-to-version', dest="sdkversion", default='latest',
-                   help='Update sdk to version. Default update to latest version 2')
+                    help='Update sdk to version. Default update to latest version 2')
+
 parser.add_argument('-d','--sdk-home', dest="sdkhome", default=sdk_home,
-				   help='Directory in which the sdk will be installed. NEOSDK_HOME Environment variable')
+                    help='Directory in which the sdk will be installed. NEOSDK_HOME Environment variable')
 
 
 args = parser.parse_args()
